@@ -14,7 +14,7 @@ function secondHalf(content) {
 
 		var wrap = calculateWrap(l, w, h);
 		// console.log("wrap", wrap);
-		var bow = l*w*h;
+		var bow = calculateBow(l, w, h);
 		// console.log("bow", bow);
 		var teste = 2*l + 2*w + l*w*h;
 		// console.log("teste", teste);
@@ -29,19 +29,19 @@ function secondHalf(content) {
 };
 
 function calculateWrap(s1, s2, s3) {
-	
+	if(s1 >= s2)
+		if(s1 >= s3)
+			return s2*2 + s3*2;
+		else
+			return s1*2 + s2*2;
+	else if (s2 >= s3)
+			return s1*2 + s3*2;
+		 else
+		 	return s1*2 + s2*2;
 }
 
-function getSmallestSide(s1, s2, s3) {
-	if(s1 <= s2)
-		if(s1 <= s3)
-			return s1;
-		else 
-			return s3; 
-	else if (s2 <= s3)
-			return s2;
-		 else
-		 	return s3;
+function calculateBow(l, w, h) {
+	return l*w*h;
 }
 
 module.exports = secondHalf;

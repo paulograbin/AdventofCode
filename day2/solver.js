@@ -7,7 +7,7 @@ read(process.argv[2]);
 
 function read(file) {
 	fs.readFile(file, 'utf-8', function(err, content) {
-		console.log(firstHalf(content));
-		console.log("Solution: ", secondHalf(content));
+		console.log("Solution:", firstHalf(content));
+		console.log("Solution:", secondHalf(content));
 	})
 };
