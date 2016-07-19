@@ -5,16 +5,12 @@ package day5.validations;
  */
 public class HasForbiddenLetterCombinationValidation implements StringValidation {
 
-    String stringUnderTest = "";
+    private String stringUnderTest = "";
 
     public boolean execute(String stringUnderTest) {
         this.stringUnderTest = stringUnderTest;
 
-        if (containsAB() || containsCD() || containsPQ() || containsXY()) {
-            return true;
-        } else {
-            return false;
-        }
+        return containsAB() || containsCD() || containsPQ() || containsXY();
     }
 
     private boolean containsXY() {

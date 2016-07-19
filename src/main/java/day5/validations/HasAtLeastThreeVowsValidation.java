@@ -1,5 +1,8 @@
 package day5.validations;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by paulograbin on 13/07/16.
  */
@@ -7,17 +10,18 @@ public class HasAtLeastThreeVowsValidation implements StringValidation {
 
     public boolean execute(String stringUnderTest) {
 
-        int vows = 0;
+        List<Character> vv = Arrays.asList('a', 'e', 'i', 'o', 'u');
+
+        int vowCount = 0;
         boolean value = false;
 
         for (int i = 0; i < stringUnderTest.length(); i++) {
-            String a = stringUnderTest.substring(i, i + 1);
+            char currentChar = stringUnderTest.charAt(i);
 
-            if (a.equals("a") || a.equals("e") || a.equals("i") || a.equals("o") || a.equals("u")) {
-                vows = vows + 1;
-            }
+            if (vv.contains(currentChar))
+               vowCount = vowCount + 1;
 
-            if (vows >= 3) {
+            if (vowCount >= 3) {
                 value = true;
             }
         }

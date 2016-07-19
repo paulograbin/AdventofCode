@@ -35,6 +35,11 @@ public class TestTwoLettersInARow {
     }
 
     @Test
+    public void testHasTwoLetterInARow4Fail() {
+        assertFalse(test.execute("abc"));
+    }
+
+    @Test
     public void testTwoDiffs() {
         assertFalse(test.execute("ab"));
     }
