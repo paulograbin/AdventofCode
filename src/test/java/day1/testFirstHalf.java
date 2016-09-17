@@ -20,7 +20,7 @@ public class testFirstHalf {
         InputFileReader inputReader = new InputFileReader(1);
         inputReader.loadInputFile();
 
-        counter = new FloorCounter(inputReader.getFileContent());
+        counter = new FloorCounter(inputReader.getFileContentAsString());
 
         System.out.println("Result is " + counter.count());
     }

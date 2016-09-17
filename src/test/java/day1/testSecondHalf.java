@@ -18,7 +18,7 @@ public class testSecondHalf {
         InputFileReader inputReader = new InputFileReader(1);
         inputReader.loadInputFile();
 
-        finder = new BasementFinder(inputReader.getFileContent());
+        finder = new BasementFinder(inputReader.getFileContentAsString());
 
         System.out.println("Result is " + finder.getPositionInWhichSantaEntersInTheBasement());
     }

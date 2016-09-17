@@ -1,4 +1,5 @@
-import commons.InputFileReader;
+package commons;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,7 +28,7 @@ public class InputFileReaderTest {
 
     @Test
     public void testGetInputOfADay() throws IOException {
-        String fileContent = fileReader.getFileContent();
+        String fileContent = fileReader.getFileContentAsString();
         assertEquals("ckczppom", fileContent);
     }
 

@@ -12,7 +12,21 @@ public class InputFileReader {
         this.dayNumber = day;
     }
 
-    public String getFileContent() throws IOException {
+    public StringQueue getFileContentAsList() throws IOException {
+        FileReader fileReader = new FileReader(inputFile);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        StringQueue queue = new StringQueue();
+
+        String s;
+        while((s = bufferedReader.readLine()) != null) {
+            queue.push(s);
+        }
+
+        return queue;
+    }
+
+    public String getFileContentAsString() throws IOException {
         FileReader fileReader = new FileReader(inputFile);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
 

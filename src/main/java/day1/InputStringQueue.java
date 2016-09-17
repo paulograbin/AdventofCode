@@ -1,8 +1,6 @@
 package day1;
 
 
-import sun.misc.Queue;
-
 import java.util.LinkedList;
 
 public class InputStringQueue extends LinkedList<Character> {
