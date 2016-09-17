@@ -2,14 +2,18 @@ package day3.firstHalf.testMovements;
 
 import day3.firstHalf.Movements.*;
 import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by paulograbin on 29/04/16.
  */
-public class TestMovementsConverter extends TestCase {
+public class TestMovementsConverter {
 
+    @Test
     public void testOne() {
         String commands = ">>>";
 
@@ -21,6 +25,7 @@ public class TestMovementsConverter extends TestCase {
         assertEquals(moves.get(2), new MovementRight());
     }
 
+    @Test
     public void testTwo() {
         String commands = "<";
 
@@ -30,6 +35,7 @@ public class TestMovementsConverter extends TestCase {
         assertEquals(moves.get(0), new MovementLeft());
     }
 
+    @Test
     public void testThree() {
         String commands = "<^>v";
 

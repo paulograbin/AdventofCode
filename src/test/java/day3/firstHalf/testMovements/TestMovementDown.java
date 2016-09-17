@@ -6,13 +6,16 @@ import day3.firstHalf.Position;
 import junit.framework.TestCase;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * Created by paulograbin on 28/04/16.
  */
-public class TestMovementDown extends TestCase {
+public class TestMovementDown {
 
     Movement m = new MovementDown();
 
+    @Test
     public void testOnUp() {
         Position p = new Position(0, 0);
 
@@ -20,9 +23,5 @@ public class TestMovementDown extends TestCase {
 
         assertEquals(newPosition.getX(), p.getX());
         assertEquals(newPosition.getY(), p.getY()-1);
-    }
-
-    public void testoi() {
-
     }
 }

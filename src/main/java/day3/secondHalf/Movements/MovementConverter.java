@@ -1,5 +1,7 @@
 package day3.secondHalf.Movements;
 
+import day3.firstHalf.Movements.*;
+
 import java.util.ArrayList;
 
 /**

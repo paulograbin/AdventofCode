@@ -1,18 +1,21 @@
 package day3.secondHalf;
 
-import day3.secondHalf.Movements.Movement;
+import day3.firstHalf.Movements.Movement;
+import day3.firstHalf.Movements.MovementDown;
+import day3.firstHalf.Movements.MovementUp;
 import day3.secondHalf.Movements.MovementConverter;
-import day3.secondHalf.Movements.MovementDown;
-import day3.secondHalf.Movements.MovementUp;
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by paulograbin on 01/05/16.
  */
-public class TestMovementConverter extends TestCase {
+public class TestMovementConverter {
 
+    @Test
     public void testEvenMovements() {
         String commandString = "^v^v^v^v^v";
 
@@ -26,6 +29,7 @@ public class TestMovementConverter extends TestCase {
         assertEquals(moves.get(4), new MovementUp());
     }
 
+    @Test
     public void testOddMovements() {
         String commandString = "^v^v^v^v^v";
 
@@ -38,7 +42,4 @@ public class TestMovementConverter extends TestCase {
         assertEquals(moves.get(3), new MovementDown());
         assertEquals(moves.get(4), new MovementDown());
     }
-
-
-
 }
