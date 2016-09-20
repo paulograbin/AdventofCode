@@ -12,10 +12,10 @@ public class InputFileReaderTest {
 
     InputFileReader fileReader;
 
-    private int dayNumber = 4;
-
     @Before
     public void setUp() {
+        int dayNumber = 4;
+
         fileReader = new InputFileReader(dayNumber);
         fileReader.loadInputFile();
     }
