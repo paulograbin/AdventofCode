@@ -18,7 +18,7 @@ public class MovementConverter {
     }
 
     private static ArrayList<Movement> parseMovementString(String commandString, int initial) {
-        ArrayList<Movement> movements = new ArrayList<Movement>();
+        ArrayList<Movement> movements = new ArrayList<>();
 
         for(int i = initial; i < commandString.length(); i = i + 2) {
             char c = commandString.charAt(i);

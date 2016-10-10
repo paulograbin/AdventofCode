@@ -3,7 +3,7 @@ package day2;
 import commons.InputFileReader;
 import commons.StringQueue;
 
-import java.io.*;
+import java.io.IOException;
 
 
 public class SecondDayInputParser {

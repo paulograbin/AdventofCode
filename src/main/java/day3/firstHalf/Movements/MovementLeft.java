@@ -13,9 +13,7 @@ public class MovementLeft implements Movement {
 
     @Override
     public boolean equals(Object obj) {
-        if(getClass() == obj.getClass())
-            return true;
+        return getClass() == obj.getClass();
 
-        return false;
     }
 }

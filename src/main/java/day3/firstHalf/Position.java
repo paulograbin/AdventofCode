@@ -30,9 +30,7 @@ public class Position {
     public boolean equals(Object obj) {
         final Position another = (Position) obj;
 
-        if(x == another.getX() && y == another.getY())
-            return true;
+        return x == another.getX() && y == another.getY();
 
-        return false;
     }
 }

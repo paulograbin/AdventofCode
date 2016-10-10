@@ -18,7 +18,7 @@ public class Santa {
 
 
     public ArrayList<Position> executeMoveSequence(ArrayList<Movement> moves) {
-        ArrayList<Position> positionsVisitedBySanta = new ArrayList<Position>();
+        ArrayList<Position> positionsVisitedBySanta = new ArrayList<>();
 
         positionsVisitedBySanta.add(p);
 

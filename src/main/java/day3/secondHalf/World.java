@@ -19,7 +19,7 @@ public class World {
     HashMap<Position, Integer> houses;
 
     public World() {
-        houses = new HashMap<Position, Integer>();
+        houses = new HashMap<>();
     }
 
     public boolean containsPosition(Position p) {

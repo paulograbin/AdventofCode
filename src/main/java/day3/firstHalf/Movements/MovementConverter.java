@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class MovementConverter {
 
     public static ArrayList<Movement> getMovementsFromString(String commandString) {
-        ArrayList<Movement> movements = new ArrayList<Movement>();
+        ArrayList<Movement> movements = new ArrayList<>();
 
         for(int i = 0; i < commandString.length(); i++) {
             char c = commandString.charAt(i);

@@ -5,7 +5,7 @@ import day1.InputStringQueue;
 
 public class BasementFinder {
 
-    InputStringQueue queue;
+    private InputStringQueue queue;
 
     public BasementFinder(String input) {
         queue = new InputStringQueue(input);
