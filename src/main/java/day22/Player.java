@@ -70,16 +70,27 @@ public class Player {
         }
 
         Spell selectedOne = chooseSpell();
+        while(playerAlreadyHaveThisEffect(selectedOne.getEffect())) {
+            selectedOne = chooseSpell();
+        }
+
         while(!hasEnoughManaForSelectedSpell(selectedOne)) {
 //            System.out.println(selectedOne + " re-selected!");
             selectedOne = chooseSpell();
-
         }
 
         System.out.println("Player casts " + selectedOne.getName());
         mana = mana - selectedOne.getManaCost();
 
         return selectedOne;
+    }
+
+    private boolean playerAlreadyHaveThisEffect(Effect effect) {
+        if(effect != null) {
+            return currentEffects.contains(effect);
+        }
+
+        return false;
     }
 
     private boolean hasEnoughManaForSelectedSpell(Spell selectedOne) {
