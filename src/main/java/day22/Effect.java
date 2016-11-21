@@ -1,34 +1,39 @@
 package day22;
 
+import lombok.Getter;
+import lombok.Setter;
+
 
 public class Effect {
 
-    private int armor;
-    private int health;
-    private int mana;
+    @Getter @Setter
+    private String name;
+    @Getter @Setter
+    private String text;
+    @Getter @Setter
+    private int affectOnArmor;
+    @Getter @Setter
+    private int affectOnHealth;
+    @Getter @Setter
+    private int affectOnMana;
+    @Getter
+    private int duration;
+    @Getter @Setter
+    private int remainingTurns;
+    @Getter @Setter
+    private boolean isSelfEffect;
+    @Getter @Setter
+    private boolean oneTimer;
 
-
-    public int getArmor() {
-        return armor;
+    public void setDuration(int duration) {
+        this.remainingTurns = duration;
+        this.duration = duration;
     }
 
-    public void setArmor(int armor) {
-        this.armor = armor;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public int getMana() {
-        return mana;
-    }
-
-    public void setMana(int mana) {
-        this.mana = mana;
+    @Override
+    public String toString() {
+        return "Effect{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }
