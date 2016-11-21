@@ -66,8 +66,9 @@ public class Turn {
         for(int i = 0; i < targetOfTurn.getCurrentEffects().size(); i++) {
             Effect effect = targetOfTurn.getCurrentEffects().get(i);
 
-            if(effect.isOneTimer() && (effect.getRemainingTurns() != effect.getDuration())) { }
-
+            if(effect.isOneTimer() && (effect.getRemainingTurns() != effect.getDuration())) {
+                removeEffectIfDurationExpired(targetOfTurn, effect);
+            }
             else {
                 targetOfTurn.setHealth(targetOfTurn.getHealth() + effect.getAffectOnHealth());
                 targetOfTurn.setMana(targetOfTurn.getMana() + effect.getAffectOnMana());
@@ -75,7 +76,6 @@ public class Turn {
             }
 
             effect.setRemainingTurns(effect.getRemainingTurns()-1);
-            System.out.println(effect.getName() + " timer is now " + effect.getRemainingTurns());
 
             removeEffectIfDurationExpired(targetOfTurn, effect);
         }

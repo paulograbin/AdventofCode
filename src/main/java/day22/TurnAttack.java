@@ -14,12 +14,4 @@ public class TurnAttack {
         this.damage = damage;
         this.spell = spell;
     }
-
-    public int getDamage() {
-        return damage;
-    }
-
-    public Spell getSpell() {
-        return spell;
-    }
 }

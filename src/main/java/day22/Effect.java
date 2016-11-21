@@ -36,4 +36,25 @@ public class Effect {
                 "name='" + name + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Effect effect = (Effect) o;
+
+        if (isSelfEffect != effect.isSelfEffect) return false;
+        if (oneTimer != effect.oneTimer) return false;
+        return name.equals(effect.name);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + (isSelfEffect ? 1 : 0);
+        result = 31 * result + (oneTimer ? 1 : 0);
+        return result;
+    }
 }

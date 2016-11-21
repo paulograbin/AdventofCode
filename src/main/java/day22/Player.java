@@ -64,25 +64,80 @@ public class Player {
     }
 
     public Spell castSpell() {
-        if(!hasEnoughMana()) {
+//        List<Spell> possibleSpells = getSpells().stream().filter(spell -> spell.getManaCost() <= mana).collect(Collectors.toList());
+//
+//        if(possibleSpells.size() == 0) {
+//            health = 0;
+//            return null;
+//        }
+//
+//        Spell selectedOne = chooseSpell(possibleSpells);
+//        while(playerAlreadyHaveThisEffect(selectedOne.getEffect())) {
+//            selectedOne = chooseSpell(possibleSpells);
+//        }
+//
+//        while(!hasEnoughManaForSelectedSpell(selectedOne)) {
+////            System.out.println(selectedOne + " re-selected!");
+//            selectedOne = chooseSpell(possibleSpells);
+//        }
+
+        Spell selectedOne = null;
+
+        if(mana >= 229 && !currentEffects.contains(spells.get(4).getEffect())) {
+            selectedOne = spells.get(4);
+            mana = mana - selectedOne.getManaCost();
+            System.out.println("Player casts " + selectedOne.getName());
+            return selectedOne;
+        }
+
+        if(mana >= 113 && !currentEffects.contains(spells.get(2).getEffect())) {
+            selectedOne = spells.get(2);
+            mana = mana - selectedOne.getManaCost();
+            System.out.println("Player casts " + selectedOne.getName());
+            return selectedOne;
+        }
+
+        if(mana >= 173 && !currentEffects.contains(spells.get(3).getEffect())) {
+            selectedOne = spells.get(3);
+
+            Effect poisonEffect = spells.get(3).getEffect();
+            poisonEffect.setAffectOnHealth(0);
+            addEffect(poisonEffect);
+
+            mana = mana - selectedOne.getManaCost();
+            System.out.println("Player casts " + selectedOne.getName());
+            return selectedOne;
+        }
+
+        if (mana >= 73) {
+            int number = new Random().nextInt(1);
+
+            if(number == 0)
+                selectedOne = spells.get(0);
+            if(number == 1)
+                selectedOne = spells.get(1);
+
+            mana = mana - selectedOne.getManaCost();
+            System.out.println("Player casts " + selectedOne.getName());
+            return selectedOne;
+        }
+
+        else if(mana >= 53) {
+            selectedOne = spells.get(0);
+
+            mana = mana - selectedOne.getManaCost();
+            System.out.println("Player casts " + selectedOne.getName());
+            return selectedOne;
+        } else {
             health = 0;
             return null;
         }
-
-        Spell selectedOne = chooseSpell();
-        while(playerAlreadyHaveThisEffect(selectedOne.getEffect())) {
-            selectedOne = chooseSpell();
-        }
-
-        while(!hasEnoughManaForSelectedSpell(selectedOne)) {
-//            System.out.println(selectedOne + " re-selected!");
-            selectedOne = chooseSpell();
-        }
-
-        System.out.println("Player casts " + selectedOne.getName());
-        mana = mana - selectedOne.getManaCost();
-
-        return selectedOne;
+//
+//
+//        System.out.println("Player casts " + selectedOne.getName());
+//        mana = mana - selectedOne.getManaCost();
+//
+//        return selectedOne;
     }
 
     private boolean playerAlreadyHaveThisEffect(Effect effect) {
@@ -101,7 +156,7 @@ public class Player {
         return mana >= 53;
     }
 
-    private Spell chooseSpell() {
+    private Spell chooseSpell(List<Spell> possibleSpells) {
         Random r = new Random();
         return spells.get(r.nextInt(spells.size()));
     }
