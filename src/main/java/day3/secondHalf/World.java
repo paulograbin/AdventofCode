@@ -3,7 +3,7 @@ package day3.secondHalf;
 import day3.firstHalf.Movements.Movement;
 import day3.firstHalf.Position;
 import day3.firstHalf.Santa;
-import day3.secondHalf.Movements.MovementConverter;
+import day3.firstHalf.Movements.MovementConverter;
 
 import java.io.BufferedReader;
 import java.io.File;

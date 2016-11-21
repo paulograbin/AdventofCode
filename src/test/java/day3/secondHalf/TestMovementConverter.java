@@ -3,7 +3,7 @@ package day3.secondHalf;
 import day3.firstHalf.Movements.Movement;
 import day3.firstHalf.Movements.MovementDown;
 import day3.firstHalf.Movements.MovementUp;
-import day3.secondHalf.Movements.MovementConverter;
+import day3.firstHalf.Movements.MovementConverter;
 import org.junit.Test;
 
 import java.util.ArrayList;

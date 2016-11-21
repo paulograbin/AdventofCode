@@ -1,16 +1,24 @@
 package day3.firstHalf.Movements;
 
+import day3.firstHalf.Movements.*;
+
 import java.util.ArrayList;
 
-/**
- * Created by paulograbin on 29/04/16.
- */
+
 public class MovementConverter {
 
-    public static ArrayList<Movement> getMovementsFromString(String commandString) {
+    public static ArrayList<Movement> getOddMovementsFromString(String commandString) {
+        return parseMovementString(commandString, 0);
+    }
+
+    public static ArrayList<Movement> getEvenMovementsFromString(String commandString) {
+        return parseMovementString(commandString, 1);
+    }
+
+    public static ArrayList<Movement> parseMovementString(String commandString, int initial) {
         ArrayList<Movement> movements = new ArrayList<>();
 
-        for(int i = 0; i < commandString.length(); i++) {
+        for(int i = initial; i < commandString.length(); i = i + 2) {
             char c = commandString.charAt(i);
             Movement m = null;
 

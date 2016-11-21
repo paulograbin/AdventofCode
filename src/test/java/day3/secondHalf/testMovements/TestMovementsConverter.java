@@ -1,7 +1,7 @@
 package day3.secondHalf.testMovements;
 
 import day3.firstHalf.Movements.*;
-import day3.secondHalf.Movements.MovementConverter;
+import day3.firstHalf.Movements.MovementConverter;
 import org.junit.Test;
 
 import java.util.ArrayList;

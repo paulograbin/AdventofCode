@@ -17,7 +17,7 @@ public class TestMovementsConverter {
     public void testOne() {
         String commands = ">>>";
 
-        ArrayList<Movement> moves = MovementConverter.getMovementsFromString(commands);
+        ArrayList<Movement> moves = MovementConverter.parseMovementString(commands, 0);
 
         assertEquals(moves.size(), commands.length());
         assertEquals(moves.get(0), new MovementRight());
@@ -29,7 +29,7 @@ public class TestMovementsConverter {
     public void testTwo() {
         String commands = "<";
 
-        ArrayList<Movement> moves = MovementConverter.getMovementsFromString(commands);
+        ArrayList<Movement> moves = MovementConverter.parseMovementString(commands, 0);
 
         assertEquals(moves.size(), commands.length());
         assertEquals(moves.get(0), new MovementLeft());
@@ -39,7 +39,7 @@ public class TestMovementsConverter {
     public void testThree() {
         String commands = "<^>v";
 
-        ArrayList<Movement> moves = MovementConverter.getMovementsFromString(commands);
+        ArrayList<Movement> moves = MovementConverter.parseMovementString(commands, 0);
 
         assertEquals(moves.size(), commands.length());
         assertEquals(moves.get(0), new MovementLeft());

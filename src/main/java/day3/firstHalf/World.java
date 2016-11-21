@@ -55,7 +55,7 @@ public class World {
             String line = "";
             while((line = bf.readLine()) != null) {
 
-                ArrayList<Movement> moves = MovementConverter.getMovementsFromString(line);
+                ArrayList<Movement> moves = MovementConverter.parseMovementString(line, 0);
 
                 ArrayList<Position> positions = s.executeMoveSequence(moves);
 
