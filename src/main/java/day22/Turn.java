@@ -20,6 +20,7 @@ public class Turn {
         this.number = number;
         this.player = player;
         this.opponent = opponent;
+        this.spellUsedByPlayer = new Spell();
     }
 
     public void playTurn() {
@@ -29,11 +30,15 @@ public class Turn {
 
         TurnAttack attack = player.playTurn();
 
+        if(attack.getDamage() == 0 && attack.getSpell() == null)
+            return;
+
         if(isAttackPhysical(attack)) {
-            System.out.println("Boss attacks for " + attack.getDamage() + " - " + opponent.getArmor() + " = " + (attack.getDamage() - opponent.getArmor()));
-            opponent.setHealth(opponent.getHealth() - (attack.getDamage() - opponent.getArmor()));
+//            System.out.println("Boss attacks for " + attack.getDamage() + " - " + opponent.getArmor() + " = " + (attack.getDamage() - opponent.getArmor()));
+//            opponent.setHealth(opponent.getHealth() - (attack.getDamage() - opponent.getArmor()));
         } else {
             applySpellEffects(attack.getSpell());
+            spellUsedByPlayer = attack.getSpell();
         }
     }
 
@@ -67,16 +72,17 @@ public class Turn {
             Effect effect = targetOfTurn.getCurrentEffects().get(i);
 
             if(effect.isOneTimer() && (effect.getRemainingTurns() != effect.getDuration())) {
-                removeEffectIfDurationExpired(targetOfTurn, effect);
+//                removeEffectIfDurationExpired(targetOfTurn, effect);
             }
             else {
+                System.out.println(effect.getText());
                 targetOfTurn.setHealth(targetOfTurn.getHealth() + effect.getAffectOnHealth());
                 targetOfTurn.setMana(targetOfTurn.getMana() + effect.getAffectOnMana());
                 targetOfTurn.setArmor(targetOfTurn.getArmor() + effect.getAffectOnArmor());
             }
 
             effect.setRemainingTurns(effect.getRemainingTurns()-1);
-
+            System.out.println(effect.getName() + " timer is now " + effect.getRemainingTurns());
             removeEffectIfDurationExpired(targetOfTurn, effect);
         }
     }

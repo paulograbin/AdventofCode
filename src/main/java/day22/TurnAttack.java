@@ -14,4 +14,12 @@ public class TurnAttack {
         this.damage = damage;
         this.spell = spell;
     }
+
+    @Override
+    public String toString() {
+        return "TurnAttack{" +
+                "damage=" + damage +
+                ", spell=" + spell +
+                '}';
+    }
 }

@@ -25,6 +25,23 @@ public class Effect {
     @Getter @Setter
     private boolean oneTimer;
 
+
+    public Effect makeCopy() {
+        Effect e = new Effect();
+
+        e.setText(this.getText());
+        e.setName(this.getName());
+        e.setAffectOnHealth(this.getAffectOnHealth());
+        e.setAffectOnArmor(this.getAffectOnArmor());
+        e.setAffectOnMana(this.getAffectOnMana());
+        e.setDuration(this.getDuration());
+        e.setRemainingTurns(this.getRemainingTurns());
+        e.setSelfEffect(this.isSelfEffect());
+        e.setOneTimer(this.isOneTimer());
+
+        return e;
+    }
+
     public void setDuration(int duration) {
         this.remainingTurns = duration;
         this.duration = duration;
@@ -32,9 +49,7 @@ public class Effect {
 
     @Override
     public String toString() {
-        return "Effect{" +
-                "name='" + name + '\'' +
-                '}';
+        return "Effect{" + "name='" + name + ", duration=" + duration + ", remaining="+remainingTurns+'}';
     }
 
     @Override

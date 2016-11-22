@@ -44,7 +44,7 @@ public class Player {
 
     public void addEffect(Effect effect) {
         if (!currentEffects.contains(effect)) {
-            currentEffects.add(effect);
+            currentEffects.add(effect.makeCopy());
         }
     }
 
@@ -83,12 +83,12 @@ public class Player {
 
         Spell selectedOne = null;
 
-        if(mana >= 229 && !currentEffects.contains(spells.get(4).getEffect())) {
-            selectedOne = spells.get(4);
-            mana = mana - selectedOne.getManaCost();
-            System.out.println("Player casts " + selectedOne.getName());
-            return selectedOne;
-        }
+//        if(mana >= 229 && !currentEffects.contains(spells.get(4).getEffect())) {
+//            selectedOne = spells.get(4);
+//            mana = mana - selectedOne.getManaCost();
+//            System.out.println("Player casts " + selectedOne.getName());
+//            return selectedOne;
+//        }
 
         if(mana >= 113 && !currentEffects.contains(spells.get(2).getEffect())) {
             selectedOne = spells.get(2);
@@ -100,8 +100,9 @@ public class Player {
         if(mana >= 173 && !currentEffects.contains(spells.get(3).getEffect())) {
             selectedOne = spells.get(3);
 
-            Effect poisonEffect = spells.get(3).getEffect();
+            Effect poisonEffect = spells.get(3).getEffect().makeCopy();
             poisonEffect.setAffectOnHealth(0);
+            poisonEffect.setText("");
             addEffect(poisonEffect);
 
             mana = mana - selectedOne.getManaCost();
@@ -123,15 +124,16 @@ public class Player {
         }
 
         else if(mana >= 53) {
-            selectedOne = spells.get(0);
+            selectedOne = Game.magicMissile;
 
             mana = mana - selectedOne.getManaCost();
             System.out.println("Player casts " + selectedOne.getName());
             return selectedOne;
-        } else {
-            health = 0;
-            return null;
         }
+//        else {
+//            health = 0;
+            return null;
+//        }
 //
 //
 //        System.out.println("Player casts " + selectedOne.getName());
@@ -165,6 +167,11 @@ public class Player {
     public String toString() {
         return "Player{" +
                 "name='" + name + '\'' +
+                ", HP=" + health +
+                ", mana=" + mana +
+                ", armor=" + armor +
+                ", damage=" + damage +
+                ", effects=" + currentEffects.size() +
                 '}';
     }
 }

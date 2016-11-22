@@ -6,16 +6,24 @@ import java.util.List;
 
 public class Game implements Runnable {
 
+    private int manaSum;
+
     private Player player;
     private Player boss;
-
     private Player winner;
 
     private ArrayList<Turn> turns;
-    private int manaSum;
+
+    public static Spell magicMissile;
+    public static Spell drain;
+    public static Spell shield;
+    public static Spell poison;
+    public static Spell recharge;
 
 
     public Game() {
+        initSpells();
+
         player = new Player();
         player.setName("Hero");
         player.setHealth(50);
@@ -33,10 +41,10 @@ public class Game implements Runnable {
 
 
     public void play() {
-        int counter = 0;
+        int counter = 1;
 
         while(playersAreAlive()) {
-            if(counter % 2 == 0) {
+            if(counter % 2 == 1) {
                 System.out.println("Player turn - " + counter);
                 printTurnHeader();
 
@@ -93,21 +101,17 @@ public class Game implements Runnable {
         return player.getHealth() > 0 && boss.getHealth() > 0;
     }
 
-    private List<Spell> getSpells() {
-        ArrayList<Spell> spells = new ArrayList<>();
-
-        Spell magicMissile = new Spell();
+    private void initSpells() {
+        magicMissile = new Spell();
         magicMissile.setName("Magic missile");
-        magicMissile.setManaCost(53);
+        magicMissile.setManaCost(5);
         magicMissile.setDamage(4);
-        spells.add(magicMissile);
 
-        Spell drain = new Spell();
+        drain = new Spell();
         drain.setName("Drain");
-        drain.setManaCost(73);
+        drain.setManaCost(7);
         drain.setDamage(2);
         drain.setHealth(2);
-        spells.add(drain);
 
 
         Effect increaseArmorBy7 = new Effect();
@@ -117,11 +121,10 @@ public class Game implements Runnable {
         increaseArmorBy7.setSelfEffect(true);
         increaseArmorBy7.setOneTimer(true);
 
-        Spell shield = new Spell();
+        shield = new Spell();
         shield.setName("Shield");
-        shield.setManaCost(113);
+        shield.setManaCost(11);
         shield.setEffect(increaseArmorBy7);
-        spells.add(shield);
 
 
         Effect dealDamage = new Effect();
@@ -129,24 +132,34 @@ public class Game implements Runnable {
         dealDamage.setAffectOnHealth(-3);
         dealDamage.setDuration(6);
         dealDamage.setSelfEffect(false);
+        dealDamage.setText("Poison deals 3 damage");
 
-        Spell poison = new Spell();
+        poison = new Spell();
         poison.setName("Poison");
-        poison.setManaCost(173);
+        poison.setManaCost(17);
         poison.setEffect(dealDamage);
-        spells.add(poison);
 
 
         Effect increaseMana = new Effect();
+        increaseMana.setText("Recharge provides 101 mana;");
         increaseMana.setName("Increase mana");
-        increaseMana.setAffectOnMana(101);
+        increaseMana.setAffectOnMana(100);
         increaseMana.setDuration(5);
         increaseMana.setSelfEffect(true);
 
-        Spell recharge = new Spell();
+        recharge = new Spell();
         recharge.setName("Recharge");
-        recharge.setManaCost(229);
+        recharge.setManaCost(22);
         recharge.setEffect(increaseMana);
+    }
+
+    private List<Spell> getSpells() {
+        ArrayList<Spell> spells = new ArrayList<>();
+
+        spells.add(magicMissile);
+        spells.add(drain);
+        spells.add(shield);
+        spells.add(poison);
         spells.add(recharge);
 
         return spells;
