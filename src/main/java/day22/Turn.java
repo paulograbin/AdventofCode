@@ -35,7 +35,7 @@ public class Turn {
 
         if(isAttackPhysical(attack)) {
 //            System.out.println("Boss attacks for " + attack.getDamage() + " - " + opponent.getArmor() + " = " + (attack.getDamage() - opponent.getArmor()));
-//            opponent.setHealth(opponent.getHealth() - (attack.getDamage() - opponent.getArmor()));
+            opponent.setHealth(opponent.getHealth() - (attack.getDamage() - opponent.getArmor()));
         } else {
             applySpellEffects(attack.getSpell());
             spellUsedByPlayer = attack.getSpell();
@@ -75,14 +75,14 @@ public class Turn {
 //                removeEffectIfDurationExpired(targetOfTurn, effect);
             }
             else {
-                System.out.println(effect.getText());
+//                System.out.println(effect.getText());
                 targetOfTurn.setHealth(targetOfTurn.getHealth() + effect.getAffectOnHealth());
                 targetOfTurn.setMana(targetOfTurn.getMana() + effect.getAffectOnMana());
                 targetOfTurn.setArmor(targetOfTurn.getArmor() + effect.getAffectOnArmor());
             }
 
             effect.setRemainingTurns(effect.getRemainingTurns()-1);
-            System.out.println(effect.getName() + " timer is now " + effect.getRemainingTurns());
+//            System.out.println(effect.getName() + " timer is now " + effect.getRemainingTurns());
             removeEffectIfDurationExpired(targetOfTurn, effect);
         }
     }

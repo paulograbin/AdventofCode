@@ -45,7 +45,7 @@ public class Game implements Runnable {
 
         while(playersAreAlive()) {
             if(counter % 2 == 1) {
-                System.out.println("Player turn - " + counter);
+//                System.out.println("Player turn - " + counter);
                 printTurnHeader();
 
                 Turn currentTurn = new Turn(turns.size(), player, boss);
@@ -55,7 +55,7 @@ public class Game implements Runnable {
                 turns.add(currentTurn);
             }
             else {
-                System.out.println("Boss turn - " + counter);
+//                System.out.println("Boss turn - " + counter);
                 printTurnHeader();
 
                 Turn currentTurn = new Turn(turns.size(), boss, player);
@@ -65,26 +65,26 @@ public class Game implements Runnable {
                 turns.add(currentTurn);
             }
 
-            System.out.println("");
+//            System.out.println("");
             counter += 1;
         }
 
         if(hasPlayerWon()) {
             winner = player;
-            System.out.println("Player has won!");
+//            System.out.println("Player has won!" + player + " ---- " + boss);
             calculateManaUsedByPlayer();
         } else if(boss.getHealth() > 0 && player.getHealth() <= 0) {
             winner = boss;
-            System.out.println("Boss has won!");
+//            System.out.println("Boss has won!"  + boss + " ---- " + player);
         }
 
-        System.out.println(counter + " played turns");
+//        System.out.println(counter + " played turns");
 
     }
 
     public void printTurnHeader() {
-        System.out.println("Player has " + player.getHealth() + " hit points, " + player.getArmor() + " armor, " + player.getMana() + " mana");
-        System.out.println("Boss has " + boss.getHealth() + " hit points");
+//        System.out.println("Player has " + player.getHealth() + " hit points, " + player.getArmor() + " armor, " + player.getMana() + " mana");
+//        System.out.println("Boss has " + boss.getHealth() + " hit points");
     }
 
     public boolean hasPlayerWon() {
@@ -104,12 +104,12 @@ public class Game implements Runnable {
     private void initSpells() {
         magicMissile = new Spell();
         magicMissile.setName("Magic missile");
-        magicMissile.setManaCost(5);
+        magicMissile.setManaCost(53);
         magicMissile.setDamage(4);
 
         drain = new Spell();
         drain.setName("Drain");
-        drain.setManaCost(7);
+        drain.setManaCost(73);
         drain.setDamage(2);
         drain.setHealth(2);
 
@@ -123,7 +123,7 @@ public class Game implements Runnable {
 
         shield = new Spell();
         shield.setName("Shield");
-        shield.setManaCost(11);
+        shield.setManaCost(113);
         shield.setEffect(increaseArmorBy7);
 
 
@@ -136,7 +136,7 @@ public class Game implements Runnable {
 
         poison = new Spell();
         poison.setName("Poison");
-        poison.setManaCost(17);
+        poison.setManaCost(173);
         poison.setEffect(dealDamage);
 
 
@@ -149,7 +149,7 @@ public class Game implements Runnable {
 
         recharge = new Spell();
         recharge.setName("Recharge");
-        recharge.setManaCost(22);
+        recharge.setManaCost(229);
         recharge.setEffect(increaseMana);
     }
 
@@ -170,21 +170,23 @@ public class Game implements Runnable {
     }
 
     public static void main(String... args) {
-        int matches = 1;
+        int matches = 1900000000;
         int leastAmountOfMana = Integer.MAX_VALUE;
 
         for(int i = 0; i < matches; i++) {
-            System.out.println("Match " + i);
+//            System.out.println("Match " + i);
             Game game = new Game();
             game.run();
 
             if(game.hasPlayerWon()) {
                 if(game.getManaSum() < leastAmountOfMana)
                     leastAmountOfMana = game.getManaSum();
+
+
+                System.out.println("Least mana user by player is: " + leastAmountOfMana);
             }
         }
 
-        System.out.println("Least mana user by player is: " + leastAmountOfMana);
     }
 
     @Override
